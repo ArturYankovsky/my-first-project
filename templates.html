@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Библиотека шаблонов — ЮВЕНТА</title>
+  <meta name="description" content="Готовые шаблоны документов для школ и детских садов: приказы, акты, рабочие программы, заявки на гранты.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .tpl-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(20px); transition: box-shadow var(--transition); }
+    .tpl-card.visible { opacity: 1; transform: translateY(0); transition: opacity .45s ease, transform .45s ease; }
+    .tpl-card:hover { box-shadow: var(--shadow-hover); }
+    .tpl-card__header { display: flex; gap: 14px; align-items: flex-start; }
+    .tpl-card__icon { width: 44px; height: 44px; border-radius: 10px; background: var(--green-light); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .tpl-card__meta { flex: 1; }
+    .tpl-card__category { font-size: 11px; text-transform: uppercase; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 4px; }
+    .tpl-card__title { font-size: 15px; font-weight: 700; line-height: 1.4; }
+    .tpl-card__desc { font-size: 13px; color: var(--text-light); line-height: 1.6; flex: 1; }
+    .tpl-card__tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tpl-card__tag { background: var(--bg); padding: 2px 8px; border-radius: 4px; font-size: 11px; color: var(--text-light); }
+    .tpl-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); gap: 8px; }
+    .tpl-card__info { font-size: 12px; color: var(--text-light); }
+
+    .search-wrap { margin-bottom: 24px; position: relative; }
+    .search-wrap input { width: 100%; padding: 12px 16px 12px 44px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 15px; font-family: var(--font); background: var(--white); }
+    .search-wrap input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,0.1); }
+    .search-wrap i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-light); }
+
+    #noResults { display: none; text-align: center; padding: 48px 20px; color: var(--text-light); }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#6A1B9A,#4A148C)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-folder-open"></i> Библиотека шаблонов</h1>
+      <p class="page-hero__subtitle">Готовые шаблоны приказов, актов и программ для скачивания — бесплатно</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="searchInput" placeholder="Поиск по шаблонам...">
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все шаблоны</button>
+        <button class="filter-btn" data-filter="orders">Приказы</button>
+        <button class="filter-btn" data-filter="acts">Акты</button>
+        <button class="filter-btn" data-filter="letters">Письма и заявки</button>
+        <button class="filter-btn" data-filter="programs">Программы</button>
+      </div>
+
+      <div class="tpl-grid" id="tplGrid"></div>
+      <div id="noResults"><i class="fa-solid fa-folder-open" style="font-size:40px;margin-bottom:16px;display:block"></i>Ничего не найдено. Попробуйте другой запрос.</div>
+
+      <!-- Генератор CTA -->
+      <div style="margin-top:48px;background:linear-gradient(135deg,#6A1B9A,#4A148C);border-radius:var(--radius);padding:36px;color:#fff;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px">Нужен документ под ваш случай?</h3>
+          <p style="opacity:0.9;font-size:14px;margin:0">Генератор документов создаст приказ или акт с вашими данными автоматически</p>
+        </div>
+        <a href="generator.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,0.6);white-space:nowrap">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Открыть генератор
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script>
+    let allTemplates = []
+    let currentFilter = 'all'
+
+    fetch('data/templates.json').then(r => r.json()).then(data => {
+      allTemplates = data
+      render(data)
+      initFilters()
+      initSearch()
+    })
+
+    function render(items) {
+      const grid = document.getElementById('tplGrid')
+      const noResults = document.getElementById('noResults')
+      grid.innerHTML = ''
+      if (!items.length) { noResults.style.display = 'block'; return }
+      noResults.style.display = 'none'
+
+      items.forEach((t, i) => {
+        const card = document.createElement('div')
+        card.className = 'tpl-card'
+        card.dataset.category = t.category
+
+        const header = document.createElement('div')
+        header.className = 'tpl-card__header'
+
+        const icon = document.createElement('div')
+        icon.className = 'tpl-card__icon'
+        const iconEl = document.createElement('i')
+        iconEl.className = 'fa-solid ' + t.icon
+        icon.appendChild(iconEl)
+
+        const meta = document.createElement('div')
+        meta.className = 'tpl-card__meta'
+        const cat = document.createElement('div')
+        cat.className = 'tpl-card__category'
+        cat.textContent = t.categoryName
+        const title = document.createElement('div')
+        title.className = 'tpl-card__title'
+        title.textContent = t.title
+        meta.appendChild(cat); meta.appendChild(title)
+
+        header.appendChild(icon); header.appendChild(meta)
+
+        const desc = document.createElement('p')
+        desc.className = 'tpl-card__desc'
+        desc.textContent = t.description
+
+        const tags = document.createElement('div')
+        tags.className = 'tpl-card__tags'
+        t.tags.forEach(tag => {
+          const span = document.createElement('span')
+          span.className = 'tpl-card__tag'
+          span.textContent = tag
+          tags.appendChild(span)
+        })
+
+        const footer = document.createElement('div')
+        footer.className = 'tpl-card__footer'
+        const info = document.createElement('span')
+        info.className = 'tpl-card__info'
+        info.textContent = t.format.toUpperCase() + ' · ' + t.pages + ' стр.'
+        const btn = document.createElement('a')
+        btn.className = 'btn btn--primary'
+        btn.style.padding = '7px 16px'
+        btn.style.fontSize = '13px'
+        btn.href = 'generator.html'
+        const btnIcon = document.createElement('i')
+        btnIcon.className = 'fa-solid fa-download'
+        btn.appendChild(btnIcon)
+        btn.appendChild(document.createTextNode(' Скачать'))
+        footer.appendChild(info); footer.appendChild(btn)
+
+        card.appendChild(header)
+        card.appendChild(desc)
+        card.appendChild(tags)
+        card.appendChild(footer)
+        grid.appendChild(card)
+
+        setTimeout(() => card.classList.add('visible'), i * 60)
+      })
+    }
+
+    function getFiltered() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase()
+      return allTemplates.filter(t => {
+        const matchFilter = currentFilter === 'all' || t.category === currentFilter
+        const matchSearch = !query || t.title.toLowerCase().includes(query) || t.description.toLowerCase().includes(query) || t.tags.some(tag => tag.toLowerCase().includes(query))
+        return matchFilter && matchSearch
+      })
+    }
+
+    function initFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+          currentFilter = btn.dataset.filter
+          render(getFiltered())
+        })
+      })
+    }
+
+    function initSearch() {
+      document.getElementById('searchInput').addEventListener('input', () => render(getFiltered()))
+    }
+  </script>
+</body>
+</html>

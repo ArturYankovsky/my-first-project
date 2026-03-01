@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оснащение по ФГОС — ЮВЕНТА</title>
+  <meta name="description" content="Оборудование ЮВЕНТА для выполнения требований ФГОС ДО, ФГОС НОО и ФГОС ООО. Комплекты для детских садов и школ.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fgos-section { margin-bottom: 48px; }
+    .fgos-section__header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+    .fgos-section__icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .fgos-section__icon--do { background: #E8F5E9; color: #2E7D32; }
+    .fgos-section__icon--noo { background: #E3F2FD; color: #1565C0; }
+    .fgos-section__icon--ooo { background: #FFF3E0; color: #E65100; }
+    .fgos-section__title { font-size: 22px; font-weight: 700; }
+    .fgos-section__subtitle { font-size: 14px; color: var(--text-light); margin-top: 4px; }
+
+    .req-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .req-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .req-card__req { font-size: 13px; color: var(--text-light); margin-bottom: 8px; line-height: 1.5; border-left: 3px solid var(--border); padding-left: 10px; }
+    .req-card__arrow { text-align: center; font-size: 18px; color: var(--green); margin: 10px 0; }
+    .req-card__product { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .req-card__desc { font-size: 13px; color: var(--text-light); line-height: 1.5; margin-bottom: 12px; }
+    .req-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+
+    .compliance-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .compliance-table th { background: var(--green); color: #fff; padding: 12px 16px; text-align: left; font-size: 14px; font-weight: 600; }
+    .compliance-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: middle; }
+    .compliance-table tr:last-child td { border-bottom: none; }
+    .compliance-table tr:hover td { background: var(--bg); }
+    .check-icon { color: #2E7D32; font-size: 16px; }
+
+    .kit-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .kit-card__title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .kit-card__desc { font-size: 14px; color: var(--text-light); margin-bottom: 16px; line-height: 1.6; }
+    .kit-card__items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .kit-card__item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+    .kit-card__item i { color: var(--green); width: 16px; }
+    .kit-card__price { font-size: 15px; font-weight: 700; color: var(--green); margin-bottom: 16px; }
+    .kits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#1565C0,#0D47A1)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-graduation-cap"></i> Оснащение по ФГОС</h1>
+      <p class="page-hero__subtitle">Оборудование ЮВЕНТА для выполнения требований ФГОС ДО, НОО и ООО</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Соответствие требованиям -->
+      <div style="background:var(--green-light);border-radius:var(--radius);padding:28px;margin-bottom:48px;display:flex;gap:20px;align-items:flex-start">
+        <i class="fa-solid fa-circle-check" style="color:var(--green);font-size:28px;margin-top:2px;flex-shrink:0"></i>
+        <div>
+          <h2 style="font-size:18px;font-weight:700;margin-bottom:8px">Всё оборудование ЮВЕНТА соответствует требованиям ФГОС</h2>
+          <p style="font-size:14px;color:var(--text-light);line-height:1.7;margin:0">Мы подбираем оборудование под конкретные требования стандартов. Готовы предоставить пакет документов для обоснования закупки: технические характеристики, соответствие ФГОС, сертификаты.</p>
+        </div>
+      </div>
+
+      <!-- ФГОС ДО -->
+      <div class="fgos-section">
+        <div class="fgos-section__header">
+          <div class="fgos-section__icon fgos-section__icon--do"><i class="fa-solid fa-child"></i></div>
+          <div>
+            <div class="fgos-section__title">ФГОС дошкольного образования (ДО)</div>
+            <div class="fgos-section__subtitle">Требования к развивающей предметно-пространственной среде (РППС)</div>
+          </div>
+        </div>
+        <div class="req-grid">
+          <div class="req-card card">
+            <div class="req-card__req">РППС должна обеспечивать возможность познавательно-исследовательской деятельности и конструирования</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Образовательные конструкторы LEGO Education</div>
+            <div class="req-card__desc">Конструкторы для детей 3–7 лет. Развивают пространственное мышление, мелкую моторику, основы STEM.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--green">ФГОС ДО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+          <div class="req-card card">
+            <div class="req-card__req">РППС должна быть насыщенной: обеспечивать игровую, познавательную, исследовательскую и творческую активность</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Настенные развивающие панели ЮВЕНТА</div>
+            <div class="req-card__desc">Интерактивные панели с LED-подсветкой и звуковыми модулями. Собственное производство ЮВЕНТА.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--green">ФГОС ДО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+          <div class="req-card card">
+            <div class="req-card__req">РППС должна быть трансформируемой и полифункциональной, допускать вариативность использования</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Интерактивная панель 55" для ДОУ</div>
+            <div class="req-card__desc">Многофункциональный инструмент: интерактивные игры, обучающие приложения, мультимедиа для занятий.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--green">ФГОС ДО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФГОС НОО -->
+      <div class="fgos-section">
+        <div class="fgos-section__header">
+          <div class="fgos-section__icon fgos-section__icon--noo"><i class="fa-solid fa-school"></i></div>
+          <div>
+            <div class="fgos-section__title">ФГОС начального общего образования (НОО)</div>
+            <div class="fgos-section__subtitle">Для 1–4 классов. Требования к учебно-материальному обеспечению (актуальная редакция)</div>
+          </div>
+        </div>
+        <div class="req-grid">
+          <div class="req-card card">
+            <div class="req-card__req">Учебные кабинеты должны быть оснащены интерактивными досками или панелями для демонстрации учебного материала</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Интерактивная панель 65" для школ</div>
+            <div class="req-card__desc">Android + Windows, встроенная система аннотаций, мультитач 20 точек, UHD 4K. Для 1–4 классов.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--blue">ФГОС НОО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+          <div class="req-card card">
+            <div class="req-card__req">Реализация программы по технологии предполагает наличие конструкторов и наборов для проектной деятельности</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">LEGO Education SPIKE Essential</div>
+            <div class="req-card__desc">Конструктор для 1–5 классов. Включает датчики, моторы, программирование в Scratch-среде.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--blue">ФГОС НОО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ФГОС ООО -->
+      <div class="fgos-section">
+        <div class="fgos-section__header">
+          <div class="fgos-section__icon fgos-section__icon--ooo"><i class="fa-solid fa-laptop-code"></i></div>
+          <div>
+            <div class="fgos-section__title">ФГОС основного общего образования (ООО)</div>
+            <div class="fgos-section__subtitle">Для 5–9 классов. Обновлён с 2025/2026 учебного года. Усилен блок технологии и информатики.</div>
+          </div>
+        </div>
+        <div class="req-grid">
+          <div class="req-card card">
+            <div class="req-card__req">Реализация обновлённого ФГОС ООО требует наличия робототехнических наборов для занятий по технологии и информатике</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Роботы-конструкторы LEGO Mindstorms / SPIKE Prime</div>
+            <div class="req-card__desc">Профессиональные наборы для 5–9 классов. Python, Scratch, блок-схемы. Соревновательная робототехника WRO.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--yellow">ФГОС ООО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+          <div class="req-card card">
+            <div class="req-card__req">Кабинеты технологии должны обеспечивать проектную деятельность учащихся с использованием современных технологий</div>
+            <div class="req-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+            <div class="req-card__product">Интерактивная панель 75" Premium</div>
+            <div class="req-card__desc">Расширенные функции для проектной работы: встроенный ПК i5, OPS-модуль, 4K-камера для видеоконференций.</div>
+            <div class="req-card__footer">
+              <span class="badge badge--yellow">ФГОС ООО</span>
+              <a href="catalog.html" class="btn btn--primary" style="padding:6px 14px;font-size:13px">Смотреть</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Готовые комплекты -->
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:8px">Готовые комплекты оснащения</h2>
+      <p style="color:var(--text-light);margin-bottom:24px;font-size:14px">Подобрали комплекты «под ключ» для разных типов учреждений</p>
+      <div class="kits-grid">
+        <div class="kit-card card">
+          <div class="kit-card__title">Базовый ДОУ</div>
+          <div class="kit-card__desc">Минимальный комплект для выполнения требований ФГОС ДО к РППС одной группы</div>
+          <div class="kit-card__items">
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Настенная развивающая панель × 2</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Конструктор LEGO Duplo</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Интерактивная панель 55"</div>
+          </div>
+          <div class="kit-card__price">от 320 000 ₽</div>
+          <a href="contacts.html" class="btn btn--primary" style="width:100%;justify-content:center">Оставить заявку</a>
+        </div>
+        <div class="kit-card card">
+          <div class="kit-card__title">Начальная школа</div>
+          <div class="kit-card__desc">Оснащение кабинета начальных классов под требования ФГОС НОО (обновлён 2024)</div>
+          <div class="kit-card__items">
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Интерактивная панель 65"</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> LEGO Education SPIKE Essential × 8</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Инструктивные материалы</div>
+          </div>
+          <div class="kit-card__price">от 480 000 ₽</div>
+          <a href="contacts.html" class="btn btn--primary" style="width:100%;justify-content:center">Оставить заявку</a>
+        </div>
+        <div class="kit-card card">
+          <div class="kit-card__title">Кабинет технологии 5–9 кл.</div>
+          <div class="kit-card__desc">Полное оснащение для уроков технологии и информатики по ФГОС ООО 2025/2026</div>
+          <div class="kit-card__items">
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Интерактивная панель 75" Premium</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> LEGO SPIKE Prime × 10 комплектов</div>
+            <div class="kit-card__item"><i class="fa-solid fa-check"></i> Роботы-манипуляторы × 2</div>
+          </div>
+          <div class="kit-card__price">от 750 000 ₽</div>
+          <a href="contacts.html" class="btn btn--primary" style="width:100%;justify-content:center">Оставить заявку</a>
+        </div>
+      </div>
+
+      <!-- Таблица соответствия -->
+      <h2 style="font-size:22px;font-weight:700;margin-top:48px;margin-bottom:16px">Таблица соответствия продуктов ФГОС</h2>
+      <div style="overflow-x:auto">
+        <table class="compliance-table">
+          <thead>
+            <tr>
+              <th>Продукт ЮВЕНТА</th>
+              <th>ФГОС ДО</th>
+              <th>ФГОС НОО</th>
+              <th>ФГОС ООО</th>
+              <th>44-ФЗ / 223-ФЗ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Интерактивная панель 55"</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>Интерактивная панель 65"</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>Интерактивная панель 75" Premium</td>
+              <td>—</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>Конструктор LEGO Duplo</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td>—</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>LEGO Education SPIKE Essential</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>LEGO SPIKE Prime / Mindstorms</td>
+              <td>—</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+            <tr>
+              <td>Настенные панели ЮВЕНТА (с LED и звуком)</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check check-icon"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top:48px;background:linear-gradient(135deg,#1565C0,#0D47A1);border-radius:var(--radius);padding:40px;text-align:center;color:#fff">
+        <h2 style="font-size:22px;font-weight:700;margin-bottom:10px">Нужна помощь с выбором оснащения?</h2>
+        <p style="opacity:0.9;font-size:14px;margin-bottom:24px">Подготовим спецификацию и пакет документов для обоснования закупки. Бесплатно.</p>
+        <a href="contacts.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,0.6)">Получить консультацию</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+</body>
+</html>

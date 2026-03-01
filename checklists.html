@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чеклисты для проверок — ЮВЕНТА</title>
+  <meta name="description" content="Интерактивные чеклисты для руководителей школ и ДОУ: СанПиН, пожарная безопасность, ФГОС, подготовка к учебному году.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .checklist-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 28px;
+    }
+    .checklist__header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .checklist__icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .checklist__icon--green { background: var(--green-light); color: var(--green); }
+    .checklist__icon--red { background: #FFEBEE; color: #C62828; }
+    .checklist__icon--blue { background: #E3F2FD; color: #1565C0; }
+    .checklist__icon--yellow { background: #FFFDE7; color: #F57F17; }
+    .checklist__title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .checklist__subtitle { font-size: 13px; color: var(--text-light); }
+    .checklist__reset { margin-left: auto; }
+
+    .checklist__progress-wrap { margin-bottom: 20px; }
+    .checklist__progress-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .checklist__progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .checklist__progress-fill--green { background: var(--green); }
+    .checklist__progress-fill--red { background: #C62828; }
+    .checklist__progress-fill--blue { background: #1565C0; }
+    .checklist__progress-fill--yellow { background: #F57F17; }
+    .checklist__progress-text { font-size: 13px; color: var(--text-light); }
+
+    .checklist__group { margin-bottom: 16px; }
+    .checklist__group-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      line-height: 1.5;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .checklist__item:hover { background: var(--bg); }
+    .checklist__item input[type=checkbox] {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--green);
+    }
+    .checklist__item--done span {
+      text-decoration: line-through;
+      color: var(--text-light);
+    }
+    .checklist__item--done { background: var(--green-light); }
+    .checklist__item--done:hover { background: #C8E6C9; }
+
+    .save-notice {
+      background: var(--green-light);
+      border-left: 4px solid var(--green);
+      padding: 12px 16px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 14px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#00695C,#004D40)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-list-check"></i> Чеклисты для проверок</h1>
+      <p class="page-hero__subtitle">Отмечайте выполненные пункты — прогресс сохраняется в вашем браузере</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="save-notice">
+        <i class="fa-solid fa-floppy-disk" style="color:var(--green);font-size:18px"></i>
+        <div>Прогресс автоматически сохраняется в браузере. Данные никуда не отправляются и не покидают ваш компьютер.</div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все чеклисты</button>
+        <button class="filter-btn" data-filter="kindergarten">ДОУ</button>
+        <button class="filter-btn" data-filter="both">Школы и ДОУ</button>
+      </div>
+
+      <div id="checklistsContainer"></div>
+
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script src="js/checklists.js"></script>
+  <script>
+    let currentFilter = 'all'
+
+    fetch('data/checklists.json').then(r => r.json()).then(data => {
+      window._checklistData = data
+      show(data)
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+          currentFilter = btn.dataset.filter
+          const filtered = currentFilter === 'all' ? data : data.filter(c => c.forWhom === currentFilter || c.forWhom === 'both')
+          show(filtered)
+        })
+      })
+    })
+
+    function show(data) {
+      renderChecklists(data)
+    }
+  </script>
+</body>
+</html>

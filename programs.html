@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Программы Минпросвещения — ЮВЕНТА</title>
+  <meta name="description" content="Актуальные федеральные программы Министерства просвещения РФ для детских садов и школ: Родительский навигатор, ФОП ДО, Цифровая образовательная среда и другие.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .prog-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:24px; opacity:0; transform:translateY(20px); transition: box-shadow var(--transition); }
+    .prog-card.visible { opacity:1; transform:translateY(0); transition: opacity .45s ease, transform .45s ease; }
+    .prog-card:hover { box-shadow: var(--shadow-hover); }
+    .prog-card__head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+    .prog-card__title { font-size:18px; font-weight:700; }
+    .prog-card__subtitle { font-size:13px; color:var(--text-light); margin-bottom:12px; }
+    .prog-card__desc { font-size:14px; color:var(--text-light); line-height:1.6; margin-bottom:16px; }
+    .prog-card__equipment { background:var(--green-light); border-radius:var(--radius-sm); padding:12px 16px; margin-bottom:16px; font-size:14px; color:var(--green); display:flex; gap:10px; align-items:flex-start; }
+    .prog-card__equipment i { flex-shrink:0; margin-top:2px; }
+    .prog-card__footer { display:flex; align-items:center; gap:12px; }
+    .programs-list { display:flex; flex-direction:column; gap:16px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li>
+          <li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li>
+          <li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li>
+        </ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#4A148C,#7B1FA2)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-graduation-cap"></i> Программы Минпросвещения</h1>
+      <p class="page-hero__subtitle">Актуальные федеральные программы для детских садов, школ и их руководителей</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все программы</button>
+        <button class="filter-btn" data-filter="kindergarten">Для детских садов</button>
+        <button class="filter-btn" data-filter="school">Для школ</button>
+        <button class="filter-btn" data-filter="management">Для руководителей</button>
+      </div>
+      <div class="programs-list" id="programsList"></div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i><a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i><a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i><a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script>
+    const FOR_COLORS = { kindergarten:'green', school:'blue', management:'yellow' }
+    let allProgs = []
+    fetch('data/programs.json').then(r=>r.json()).then(data=>{ allProgs=data; render(data); initFilters() })
+
+    function render(items) {
+      const list = document.getElementById('programsList')
+      list.innerHTML = ''
+      items.forEach((p,i) => {
+        const card = document.createElement('div')
+        card.className = 'prog-card'
+        card.dataset.filter = p.forWhom
+
+        const head = document.createElement('div'); head.className='prog-card__head'
+        const title = document.createElement('h3'); title.className='prog-card__title'; title.textContent=p.title
+        const badges = document.createElement('div'); badges.style.display='flex'; badges.style.gap='8px'; badges.style.flexWrap='wrap'
+        const badge1 = document.createElement('span'); badge1.className=`badge badge--${FOR_COLORS[p.forWhom]||'blue'}`; badge1.textContent=p.forWhomName
+        const badge2 = document.createElement('span'); badge2.className='badge badge--green'; badge2.textContent=p.statusText
+        badges.appendChild(badge1); badges.appendChild(badge2)
+        head.appendChild(title); head.appendChild(badges)
+
+        const subtitle = document.createElement('p'); subtitle.className='prog-card__subtitle'; subtitle.textContent=p.subtitle
+        const desc = document.createElement('p'); desc.className='prog-card__desc'; desc.textContent=p.description
+
+        card.appendChild(head); card.appendChild(subtitle); card.appendChild(desc)
+
+        if (p.ourEquipment) {
+          const eq = document.createElement('div'); eq.className='prog-card__equipment'
+          const icon = document.createElement('i'); icon.className='fa-solid fa-link'
+          const text = document.createElement('span'); text.textContent='Наше оборудование: ' + p.ourEquipment
+          eq.appendChild(icon); eq.appendChild(text); card.appendChild(eq)
+        }
+
+        const footer = document.createElement('div'); footer.className='prog-card__footer'
+        if (p.url) {
+          const link = document.createElement('a'); link.href=p.url; link.target='_blank'; link.rel='noopener noreferrer'
+          link.className='btn btn--outline'; link.style.padding='8px 16px'; link.style.fontSize='13px'; link.textContent='Официальный сайт'
+          footer.appendChild(link)
+        }
+        if (p.ourEquipment) {
+          const catLink = document.createElement('a'); catLink.href='catalog.html'; catLink.className='btn btn--primary'
+          catLink.style.padding='8px 16px'; catLink.style.fontSize='13px'; catLink.textContent='Смотреть оборудование'
+          footer.appendChild(catLink)
+        }
+        card.appendChild(footer)
+        list.appendChild(card)
+        setTimeout(()=>card.classList.add('visible'), i*70)
+      })
+    }
+
+    function initFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', ()=>{
+          document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'))
+          btn.classList.add('active')
+          const f=btn.dataset.filter
+          render(f==='all'?allProgs:allProgs.filter(p=>p.forWhom===f))
+        })
+      })
+    }
+  </script>
+</body>
+</html>

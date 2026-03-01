@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор документов — ЮВЕНТА</title>
+  <meta name="description" content="Онлайн-генератор документов для школ и ДОУ: приказы, акты приёмки оборудования, заявки на гранты. Скачайте готовый .docx файл.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gen-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .gen-tab {
+      padding: 10px 20px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gen-tab:hover { border-color: var(--green); color: var(--green); }
+    .gen-tab.active { border-color: var(--green); background: var(--green); color: #fff; }
+
+    .gen-panel { display: none; }
+    .gen-panel.active { display: block; }
+
+    .gen-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 768px) { .gen-layout { grid-template-columns: 1fr; } }
+
+    .gen-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .gen-form-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .gen-form-card .desc { font-size: 13px; color: var(--text-light); margin-bottom: 24px; line-height: 1.6; }
+
+    .gen-preview {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+    .gen-preview h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+    .gen-preview .preview-doc {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      font-family: 'Times New Roman', serif;
+      color: #333;
+    }
+    .gen-preview .preview-center { text-align: center; margin-bottom: 8px; }
+    .gen-preview .preview-bold { font-weight: bold; }
+    .gen-preview .preview-line { border-bottom: 1px dashed var(--border); margin: 12px 0; }
+
+    .notice {
+      background: #E3F2FD;
+      border-left: 4px solid var(--blue);
+      padding: 12px 16px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 13px;
+      margin-bottom: 28px;
+      color: var(--text-light);
+    }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#4527A0,#311B92)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-wand-magic-sparkles"></i> Генератор документов</h1>
+      <p class="page-hero__subtitle">Заполните форму — получите готовый .docx файл за 5 секунд</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="notice">
+        <i class="fa-solid fa-circle-info" style="color:var(--blue)"></i>
+        Документы генерируются прямо в вашем браузере. Данные никуда не отправляются. Скачанный файл можно редактировать в Word или LibreOffice.
+      </div>
+
+      <div class="gen-tabs">
+        <button class="gen-tab active" data-tab="order"><i class="fa-solid fa-file-signature"></i> Приказ о рабочих программах</button>
+        <button class="gen-tab" data-tab="act"><i class="fa-solid fa-file-contract"></i> Акт приёмки оборудования</button>
+        <button class="gen-tab" data-tab="grant"><i class="fa-solid fa-envelope"></i> Заявка на грант</button>
+      </div>
+
+      <!-- Панель 1: Приказ -->
+      <div class="gen-panel active" id="panel-order">
+        <div class="gen-layout">
+          <div class="gen-form-card">
+            <h2>Приказ об утверждении рабочих программ</h2>
+            <p class="desc">Генерирует типовой приказ директора/заведующей об утверждении рабочих программ на учебный год.</p>
+            <form class="form" id="formOrder">
+              <div class="form__group">
+                <label>Наименование организации *</label>
+                <input type="text" id="o_org" required placeholder="МБДОУ «Детский сад №1 «Ромашка»»">
+              </div>
+              <div class="form__group">
+                <label>Дата приказа *</label>
+                <input type="text" id="o_date" required placeholder="01.09.2025">
+              </div>
+              <div class="form__group">
+                <label>Номер приказа</label>
+                <input type="text" id="o_number" placeholder="125">
+              </div>
+              <div class="form__group">
+                <label>ФИО директора / заведующей *</label>
+                <input type="text" id="o_director" required placeholder="Иванова Мария Петровна">
+              </div>
+              <div class="form__group">
+                <label>Учебный год *</label>
+                <input type="text" id="o_year" required placeholder="2025" value="2025">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+                <i class="fa-solid fa-download"></i> Скачать .docx
+              </button>
+            </form>
+          </div>
+          <div class="gen-preview">
+            <h3><i class="fa-solid fa-eye"></i> Предварительный вид</h3>
+            <div class="preview-doc">
+              <p class="preview-center preview-bold">МБДОУ «ДЕТСКИЙ САД №1»</p>
+              <p class="preview-center preview-bold" style="font-size:16px">ПРИКАЗ</p>
+              <p class="preview-center">от 01.09.2025 № 125</p>
+              <div class="preview-line"></div>
+              <p class="preview-center preview-bold">Об утверждении рабочих программ на 2025/2026 учебный год</p>
+              <div class="preview-line"></div>
+              <p>В целях обеспечения реализации образовательных программ…</p>
+              <p><strong>ПРИКАЗЫВАЮ:</strong></p>
+              <p>1. Утвердить рабочие программы…</p>
+              <p>2. Педагогическим работникам осуществлять…</p>
+              <p>3. Заместителю руководителя…</p>
+              <div class="preview-line"></div>
+              <p>Директор: _____________ / Иванова М.П. /</p>
+              <p>М.П.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Панель 2: Акт -->
+      <div class="gen-panel" id="panel-act">
+        <div class="gen-layout">
+          <div class="gen-form-card">
+            <h2>Акт приёма-передачи оборудования</h2>
+            <p class="desc">Первичный учётный документ для постановки оборудования на баланс бюджетной организации.</p>
+            <form class="form" id="formAct">
+              <div class="form__group">
+                <label>Наименование получателя (ваша организация) *</label>
+                <input type="text" id="a_org" required placeholder="МБОУ «Школа №15»">
+              </div>
+              <div class="form__group">
+                <label>Дата акта *</label>
+                <input type="text" id="a_date" required placeholder="15.09.2025">
+              </div>
+              <div class="form__group">
+                <label>Номер акта</label>
+                <input type="text" id="a_number" placeholder="12">
+              </div>
+              <div class="form__group">
+                <label>Поставщик</label>
+                <input type="text" id="a_supplier" placeholder="ООО «ЮВЕНТА»" value="ООО «ЮВЕНТА»">
+              </div>
+              <div class="form__group">
+                <label>Наименование оборудования *</label>
+                <input type="text" id="a_equipment" required placeholder="Интерактивная панель 65 дюймов">
+              </div>
+              <div class="form__group">
+                <label>Количество *</label>
+                <input type="number" id="a_quantity" required placeholder="1" value="1" min="1">
+              </div>
+              <div class="form__group">
+                <label>Стоимость (₽) *</label>
+                <input type="text" id="a_price" required placeholder="150 000,00">
+              </div>
+              <div class="form__group">
+                <label>ФИО директора / заведующей *</label>
+                <input type="text" id="a_director" required placeholder="Иванова Мария Петровна">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+                <i class="fa-solid fa-download"></i> Скачать .docx
+              </button>
+            </form>
+          </div>
+          <div class="gen-preview">
+            <h3><i class="fa-solid fa-eye"></i> Предварительный вид</h3>
+            <div class="preview-doc">
+              <p class="preview-center preview-bold" style="font-size:16px">АКТ № 12</p>
+              <p class="preview-center preview-bold">приёма-передачи учебного оборудования</p>
+              <p class="preview-center">от 15.09.2025 г.</p>
+              <div class="preview-line"></div>
+              <p>Поставщик — ООО «ЮВЕНТА» передал, Получатель — МБОУ «Школа №15» принял оборудование:</p>
+              <p><strong>Наименование:</strong> Интерактивная панель 65"</p>
+              <p><strong>Количество:</strong> 1 шт.</p>
+              <p><strong>Стоимость:</strong> 150 000,00 руб.</p>
+              <div class="preview-line"></div>
+              <p>Претензий по качеству и комплектности нет.</p>
+              <div class="preview-line"></div>
+              <p>Передал: _____________ / _____________ /</p>
+              <p>Принял: _____________ / Иванова М.П. /</p>
+              <p>М.П.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Панель 3: Заявка на грант -->
+      <div class="gen-panel" id="panel-grant">
+        <div class="gen-layout">
+          <div class="gen-form-card">
+            <h2>Заявка на участие в грантовом конкурсе</h2>
+            <p class="desc">Универсальная форма заявки для участия в грантах Минпросвещения, ПФКИ и региональных конкурсах.</p>
+            <form class="form" id="formGrant">
+              <div class="form__group">
+                <label>Название гранта / конкурса *</label>
+                <input type="text" id="g_grantname" required placeholder="Президентский фонд культурных инициатив">
+              </div>
+              <div class="form__group">
+                <label>Наименование организации *</label>
+                <input type="text" id="g_org" required placeholder="МБДОУ «Детский сад №1»">
+              </div>
+              <div class="form__group">
+                <label>ФИО руководителя *</label>
+                <input type="text" id="g_director" required placeholder="Иванова Мария Петровна">
+              </div>
+              <div class="form__group">
+                <label>Название проекта *</label>
+                <input type="text" id="g_project" required placeholder="«Мир возможностей» — STEM для дошкольников">
+              </div>
+              <div class="form__group">
+                <label>Запрашиваемая сумма (₽) *</label>
+                <input type="text" id="g_amount" required placeholder="500 000">
+              </div>
+              <div class="form__group">
+                <label>Дата</label>
+                <input type="text" id="g_date" placeholder="01.03.2025">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+                <i class="fa-solid fa-download"></i> Скачать .docx
+              </button>
+            </form>
+          </div>
+          <div class="gen-preview">
+            <h3><i class="fa-solid fa-eye"></i> Предварительный вид</h3>
+            <div class="preview-doc">
+              <p style="text-align:right">В конкурсную комиссию</p>
+              <p style="text-align:right"><strong>Президентского фонда</strong></p>
+              <p style="text-align:right">от МБДОУ «Детский сад №1»</p>
+              <div class="preview-line"></div>
+              <p class="preview-center preview-bold" style="font-size:16px">ЗАЯВКА</p>
+              <p class="preview-center">на участие в грантовом конкурсе</p>
+              <div class="preview-line"></div>
+              <p><strong>1. Организация:</strong> МБДОУ «Детский сад №1»</p>
+              <p><strong>2. Руководитель:</strong> Иванова М.П.</p>
+              <p><strong>3. Проект:</strong> «Мир возможностей»</p>
+              <p><strong>4. Сумма:</strong> 500 000 руб.</p>
+              <p><strong>5. Цель:</strong> [Описание]</p>
+              <div class="preview-line"></div>
+              <p>Руководитель: _____________ / Иванова М.П. /</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+
+  <!-- docx.js — генерация .docx в браузере -->
+  <script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/generator.js"></script>
+  <script>
+    // Переключение вкладок
+    document.querySelectorAll('.gen-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.gen-tab').forEach(t => t.classList.remove('active'))
+        document.querySelectorAll('.gen-panel').forEach(p => p.classList.remove('active'))
+        tab.classList.add('active')
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active')
+      })
+    })
+  </script>
+</body>
+</html>

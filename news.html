@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новости — ЮВЕНТА</title>
+  <meta name="description" content="Новости компании ЮВЕНТА и образовательной сферы: изменения ФГОС, новые гранты, обновления оборудования.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .news-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; }
+    .news-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; opacity:0; transform:translateY(20px); transition: box-shadow var(--transition); }
+    .news-card.visible { opacity:1; transform:translateY(0); transition: opacity .45s ease, transform .45s ease; }
+    .news-card:hover { box-shadow:var(--shadow-hover); }
+    .news-card__img { height:160px; background:linear-gradient(135deg, var(--green), var(--blue)); display:flex; align-items:center; justify-content:center; font-size:48px; color:rgba(255,255,255,.3); }
+    .news-card__body { padding:20px; }
+    .news-card__meta { display:flex; gap:10px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+    .news-card__date { font-size:12px; color:var(--text-light); }
+    .news-card__title { font-size:17px; font-weight:700; margin-bottom:10px; line-height:1.4; }
+    .news-card__preview { font-size:14px; color:var(--text-light); line-height:1.6; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#1565C0,#0D47A1)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-newspaper"></i> Новости</h1>
+      <p class="page-hero__subtitle">Новости компании ЮВЕНТА и актуальные события в сфере образования</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все новости</button>
+        <button class="filter-btn" data-filter="company">Новости компании</button>
+        <button class="filter-btn" data-filter="education">Образование</button>
+        <button class="filter-btn" data-filter="grants">Гранты</button>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i><a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i><a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i><a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script>
+    const CAT_ICONS = { company:'🏢', education:'📚', grants:'💰' }
+    const CAT_COLORS = { company:'green', education:'blue', grants:'yellow' }
+    let allNews = []
+    fetch('data/news.json').then(r=>r.json()).then(data=>{ allNews=data; render(data); initFilters() })
+
+    function render(items) {
+      const grid = document.getElementById('newsGrid')
+      grid.innerHTML = ''
+      items.forEach((n,i) => {
+        const card = document.createElement('div')
+        card.className = 'news-card card'
+        card.dataset.category = n.category
+
+        const img = document.createElement('div'); img.className='news-card__img'
+        img.textContent = CAT_ICONS[n.category] || '📰'
+
+        const body = document.createElement('div'); body.className='news-card__body'
+        const meta = document.createElement('div'); meta.className='news-card__meta'
+        const badge = document.createElement('span'); badge.className=`badge badge--${CAT_COLORS[n.category]||'blue'}`; badge.textContent=n.categoryName
+        const date = document.createElement('span'); date.className='news-card__date'; date.textContent=n.dateText
+        meta.appendChild(badge); meta.appendChild(date)
+
+        const title = document.createElement('h3'); title.className='news-card__title'; title.textContent=n.title
+        const preview = document.createElement('p'); preview.className='news-card__preview'; preview.textContent=n.preview
+
+        body.appendChild(meta); body.appendChild(title); body.appendChild(preview)
+        card.appendChild(img); card.appendChild(body)
+        grid.appendChild(card)
+        setTimeout(()=>card.classList.add('visible'), i*80)
+      })
+    }
+
+    function initFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', ()=>{
+          document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'))
+          btn.classList.add('active')
+          const f=btn.dataset.filter
+          render(f==='all'?allNews:allNews.filter(n=>n.category===f))
+        })
+      })
+    }
+  </script>
+</body>
+</html>

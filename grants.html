@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гранты и федеральные проекты — ЮВЕНТА</title>
+  <meta name="description" content="Актуальные гранты, конкурсы и федеральные проекты для детских садов и школ. Суммы, дедлайны, ссылки на официальные источники.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .grant-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: box-shadow var(--transition); opacity: 0; transform: translateY(20px); }
+    .grant-card.visible { opacity:1; transform:translateY(0); transition: opacity .45s ease, transform .45s ease; }
+    .grant-card:hover { box-shadow: var(--shadow-hover); }
+    .grant-card__header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+    .grant-card__title { font-size:18px; font-weight:700; line-height:1.3; }
+    .grant-card__desc { font-size:14px; color:var(--text-light); line-height:1.6; margin-bottom:16px; }
+    .grant-card__meta { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+    .grant-card__meta-item { display:flex; flex-direction:column; gap:2px; }
+    .grant-card__meta-label { font-size:11px; color:var(--text-light); text-transform:uppercase; letter-spacing:.5px; }
+    .grant-card__meta-value { font-size:15px; font-weight:700; color:var(--text); }
+    .grant-card__equipment { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+    .grant-card__footer { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .deadline-urgent { color: var(--red); font-weight:700; }
+    .grants-list { display:flex; flex-direction:column; gap:16px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="documents.html">Документы (ФГОС, ФОП)</a></li>
+          <li><a href="programs.html">Программы Минпросвещения</a></li>
+          <li><a href="grants.html">Гранты и федеральные проекты</a></li>
+          <li><a href="deadlines.html">Календарь дедлайнов</a></li>
+          <li><a href="checklists.html">Чеклисты для проверок</a></li>
+          <li><a href="templates.html">Библиотека шаблонов</a></li>
+          <li><a href="generator.html">Генератор документов</a></li>
+        </ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts">
+      <a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a>
+      <a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero page-hero--yellow">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-hand-holding-dollar"></i> Гранты и федеральные проекты</h1>
+      <p class="page-hero__subtitle">Источники финансирования для детских садов и школ с привязкой к нашему оборудованию</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="federal">Федеральные проекты</button>
+        <button class="filter-btn" data-filter="grant">Гранты</button>
+        <button class="filter-btn" data-filter="regional">Региональные</button>
+      </div>
+      <div class="grants-list" id="grantsList"></div>
+    </div>
+  </section>
+
+  <section class="section section--gray">
+    <div class="container" style="max-width:720px;">
+      <h2 class="section__title"><i class="fa-solid fa-lightbulb" style="color:var(--yellow)"></i> Как наше оборудование помогает выиграть грант</h2>
+      <p style="color:var(--text-light); margin-bottom:24px;">Большинство грантов и федеральных проектов требуют оснащения современным оборудованием. ЮВЕНТА поставляет товары, которые напрямую закрывают требования ФОП, ФГОС и нацпроектов.</p>
+      <a href="fgos-equipment.html" class="btn btn--primary"><i class="fa-solid fa-clipboard-check"></i> Смотреть оснащение по ФГОС</a>
+      <a href="catalog.html" class="btn btn--outline" style="margin-left:12px;"><i class="fa-solid fa-store"></i> Каталог товаров</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i><a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i><a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i><a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p><p><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script>
+    const TYPE_COLORS = { federal:'blue', grant:'green', regional:'yellow' }
+    const FOR_WHOM_LABELS = { school:'Школы', kindergarten:'Детские сады', management:'Руководители' }
+    let allGrants = []
+
+    fetch('data/grants.json').then(r=>r.json()).then(data=>{ allGrants=data; render(data); initFilters() })
+
+    function isUrgent(deadline) {
+      if (!deadline) return false
+      const diff = (new Date(deadline) - new Date()) / 86400000
+      return diff >= 0 && diff <= 30
+    }
+
+    function render(items) {
+      const list = document.getElementById('grantsList')
+      list.innerHTML = ''
+      items.forEach((g, i) => {
+        const card = document.createElement('div')
+        card.className = 'grant-card'
+        card.dataset.filter = g.type
+
+        const header = document.createElement('div')
+        header.className = 'grant-card__header'
+
+        const titleEl = document.createElement('h3')
+        titleEl.className = 'grant-card__title'
+        titleEl.textContent = g.title
+
+        const badgeEl = document.createElement('span')
+        badgeEl.className = `badge badge--${TYPE_COLORS[g.type]||'blue'}`
+        badgeEl.textContent = g.typeName
+
+        header.appendChild(titleEl); header.appendChild(badgeEl)
+
+        const desc = document.createElement('p')
+        desc.className = 'grant-card__desc'
+        desc.textContent = g.description
+
+        const meta = document.createElement('div')
+        meta.className = 'grant-card__meta'
+
+        const amountItem = document.createElement('div'); amountItem.className='grant-card__meta-item'
+        const amountLabel = document.createElement('span'); amountLabel.className='grant-card__meta-label'; amountLabel.textContent='Сумма'
+        const amountVal = document.createElement('span'); amountVal.className='grant-card__meta-value'; amountVal.textContent=g.amount
+        amountItem.appendChild(amountLabel); amountItem.appendChild(amountVal)
+
+        const deadlineItem = document.createElement('div'); deadlineItem.className='grant-card__meta-item'
+        const deadlineLabel = document.createElement('span'); deadlineLabel.className='grant-card__meta-label'; deadlineLabel.textContent='Дедлайн'
+        const deadlineVal = document.createElement('span')
+        deadlineVal.className = 'grant-card__meta-value' + (isUrgent(g.deadline)?' deadline-urgent':'')
+        deadlineVal.textContent = isUrgent(g.deadline) ? '⚠️ ' + g.deadlineText : g.deadlineText
+        deadlineItem.appendChild(deadlineLabel); deadlineItem.appendChild(deadlineVal)
+
+        meta.appendChild(amountItem); meta.appendChild(deadlineItem)
+
+        const equipment = document.createElement('div')
+        equipment.className = 'grant-card__equipment'
+        g.equipment.forEach(eq => {
+          const tag = document.createElement('span'); tag.className='badge badge--green'; tag.textContent=eq
+          equipment.appendChild(tag)
+        })
+
+        const footer = document.createElement('div')
+        footer.className = 'grant-card__footer'
+
+        const forWhom = document.createElement('span')
+        forWhom.style.fontSize='13px'; forWhom.style.color='var(--text-light)'
+        forWhom.textContent = 'Для: ' + g.forWhom.map(f=>FOR_WHOM_LABELS[f]).join(', ')
+
+        footer.appendChild(forWhom)
+
+        if (g.url) {
+          const link = document.createElement('a'); link.href=g.url; link.target='_blank'; link.rel='noopener noreferrer'
+          link.className='btn btn--outline'; link.style.padding='8px 16px'; link.style.fontSize='13px'
+          link.textContent='Подробнее'; footer.appendChild(link)
+        }
+
+        card.appendChild(header); card.appendChild(desc); card.appendChild(meta)
+        card.appendChild(equipment); card.appendChild(footer)
+        list.appendChild(card)
+        setTimeout(()=>card.classList.add('visible'), i*70)
+      })
+    }
+
+    function initFilters() {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', ()=>{
+          document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'))
+          btn.classList.add('active')
+          const f = btn.dataset.filter
+          render(f==='all' ? allGrants : allGrants.filter(g=>g.type===f))
+        })
+      })
+    }
+  </script>
+</body>
+</html>

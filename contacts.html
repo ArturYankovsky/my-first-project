@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — ЮВЕНТА</title>
+  <meta name="description" content="Контакты компании ЮВЕНТА: телефон, email, Telegram. Оставьте заявку на поставку образовательного оборудования.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 768px) { .contacts-grid { grid-template-columns: 1fr; } }
+
+    .contact-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; }
+    .contact-block__title { font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-item__icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+    .contact-item__icon--green { background: var(--green-light); color: var(--green); }
+    .contact-item__icon--blue { background: #E3F2FD; color: var(--blue); }
+    .contact-item__icon--tg { background: #E3F2FD; color: #229ED9; }
+    .contact-item__label { font-size: 12px; color: var(--text-light); margin-bottom: 4px; }
+    .contact-item__value { font-size: 16px; font-weight: 500; }
+    .contact-item__value a { color: var(--text); text-decoration: none; }
+    .contact-item__value a:hover { color: var(--green); }
+
+    .legal-table { width: 100%; border-collapse: collapse; }
+    .legal-table td { padding: 10px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .legal-table td:first-child { color: var(--text-light); font-size: 14px; width: 45%; }
+    .legal-table td:last-child { font-weight: 500; font-size: 14px; }
+    .legal-table tr:last-child td { border-bottom: none; }
+
+    .messengers { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+    .messenger-btn { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius); font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
+    .messenger-btn:hover { opacity: 0.85; }
+    .messenger-btn--tg { background: #229ED9; color: #fff; }
+    .messenger-btn--wa { background: #25D366; color: #fff; }
+    .messenger-btn i { font-size: 20px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <header class="header"><div class="container header__inner">
+    <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+    <nav class="nav" id="nav"><ul class="nav__list">
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="documents.html">Документы (ФГОС, ФОП)</a></li><li><a href="programs.html">Программы Минпросвещения</a></li><li><a href="grants.html">Гранты и федеральные проекты</a></li><li><a href="deadlines.html">Календарь дедлайнов</a></li><li><a href="checklists.html">Чеклисты для проверок</a></li><li><a href="templates.html">Библиотека шаблонов</a></li><li><a href="generator.html">Генератор документов</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li></ul>
+      </li>
+      <li class="nav__item nav__item--dropdown"><a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown"><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul>
+      </li>
+    </ul></nav>
+    <div class="header__contacts"><a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a><a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a></div>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div></header>
+
+  <section class="page-hero" style="background:linear-gradient(135deg,#2E7D32,#1B5E20)">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-address-book"></i> Контакты</h1>
+      <p class="page-hero__subtitle">Свяжитесь с нами любым удобным способом — ответим быстро</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contacts-grid">
+
+        <!-- Контактная информация -->
+        <div>
+          <div class="contact-block card">
+            <div class="contact-block__title"><i class="fa-solid fa-phone" style="color:var(--green)"></i> Как связаться</div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon contact-item__icon--green"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="contact-item__label">Телефон</div>
+                <div class="contact-item__value"><a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon contact-item__icon--blue"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div class="contact-item__label">Email</div>
+                <div class="contact-item__value"><a href="mailto:info@yuventa.ru">info@yuventa.ru</a></div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon contact-item__icon--tg"><i class="fa-brands fa-telegram"></i></div>
+              <div>
+                <div class="contact-item__label">Мессенджеры</div>
+                <div class="contact-item__value" style="margin-top:8px">
+                  <div class="messengers">
+                    <a href="https://t.me/yuventa" class="messenger-btn messenger-btn--tg" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-brands fa-telegram"></i> Написать в Telegram
+                    </a>
+                    <a href="https://wa.me/79000000000" class="messenger-btn messenger-btn--wa" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-brands fa-whatsapp"></i> Написать в WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__icon contact-item__icon--green"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <div class="contact-item__label">Режим работы</div>
+                <div class="contact-item__value">Пн–Пт: 9:00 – 18:00 (МСК)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-block card" style="margin-top:24px">
+            <div class="contact-block__title"><i class="fa-solid fa-building" style="color:var(--blue)"></i> Реквизиты</div>
+            <table class="legal-table">
+              <tr><td>Полное наименование</td><td>ООО «ЮВЕНТА»</td></tr>
+              <tr><td>ИНН</td><td>0000000000</td></tr>
+              <tr><td>ОГРН</td><td>0000000000000</td></tr>
+              <tr><td>Юридический адрес</td><td>000000, г. Москва, ул. Примерная, д. 1</td></tr>
+              <tr><td>Расчётный счёт</td><td>00000000000000000000</td></tr>
+              <tr><td>Банк</td><td>ПАО «Сбербанк России»</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Форма обратной связи -->
+        <div class="contact-block card">
+          <div class="contact-block__title"><i class="fa-solid fa-paper-plane" style="color:var(--green)"></i> Написать нам</div>
+          <p style="color:var(--text-light);font-size:14px;margin-bottom:24px;margin-top:-8px">Оставьте заявку или задайте вопрос — ответим в течение рабочего дня</p>
+
+          <form class="form" id="contactForm">
+            <div class="form__group">
+              <label for="name">Ваше имя *</label>
+              <input type="text" id="name" name="name" required placeholder="Иванова Мария Петровна">
+            </div>
+            <div class="form__group">
+              <label for="org">Организация</label>
+              <input type="text" id="org" name="org" placeholder="МБДОУ «Детский сад №1»">
+            </div>
+            <div class="form__group">
+              <label for="phone">Телефон *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+7 (900) 000-00-00">
+            </div>
+            <div class="form__group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="ivanova@school.ru">
+            </div>
+            <div class="form__group">
+              <label for="subject">Тема обращения</label>
+              <select id="subject" name="subject">
+                <option value="">Выберите тему</option>
+                <option value="catalog">Вопрос по каталогу</option>
+                <option value="order">Оставить заявку</option>
+                <option value="fgos">Оснащение по ФГОС</option>
+                <option value="grant">Закупка по гранту</option>
+                <option value="other">Другое</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label for="message">Сообщение *</label>
+              <textarea id="message" name="message" required placeholder="Опишите ваш вопрос или запрос..." style="min-height:120px"></textarea>
+            </div>
+            <div class="form__consent">
+              <label>
+                <input type="checkbox" required>
+                Согласен(а) на <a href="policy.html" target="_blank">обработку персональных данных</a>
+              </label>
+            </div>
+            <!-- TODO: добавить Cloudflare Turnstile перед публикацией -->
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+              <i class="fa-solid fa-paper-plane"></i> Отправить сообщение
+            </button>
+            <div id="formResult" style="display:none;margin-top:16px;padding:12px 16px;border-radius:var(--radius);font-size:14px"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top:48px;background:linear-gradient(135deg,var(--green),#1B5E20);border-radius:var(--radius);padding:40px;text-align:center;color:#fff">
+        <h2 style="font-size:24px;font-weight:700;margin-bottom:12px">Нужно оборудование по ФГОС?</h2>
+        <p style="opacity:0.9;margin-bottom:24px;font-size:15px">Подберём комплект под ваш бюджет и требования. Работаем по 44-ФЗ и 223-ФЗ.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="catalog.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,0.6)">Смотреть каталог</a>
+          <a href="fgos-equipment.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,0.6)">Оснащение по ФГОС</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer__inner">
+    <div class="footer__col"><div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:12px">ЮВЕНТА</div><p class="footer__desc">Образовательное оборудование для детских садов и школ</p></div>
+    <div class="footer__col"><h4 class="footer__heading">Руководителям</h4><ul class="footer__links"><li><a href="documents.html">Документы ФГОС/ФОП</a></li><li><a href="grants.html">Гранты и проекты</a></li><li><a href="checklists.html">Чеклисты</a></li><li><a href="generator.html">Генератор документов</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Компания</h4><ul class="footer__links"><li><a href="catalog.html">Каталог товаров</a></li><li><a href="news.html">Новости</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__heading">Контакты</h4><p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p><p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p><p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p></div>
+  </div><div class="footer__bottom"><div class="container footer__bottom-inner"><p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p><a href="policy.html">Политика конфиденциальности</a></div></div></footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><i class="fa-brands fa-telegram"></i></a>
+  <script src="js/nav.js"></script>
+  <script src="js/form.js"></script>
+  <script>
+    if (typeof initContactForm === 'function') initContactForm('contactForm', 'formResult')
+  </script>
+</body>
+</html>
