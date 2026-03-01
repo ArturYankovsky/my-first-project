@@ -691,6 +691,69 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .hero__subtitle { animation: fadeSlideUp 0.7s 0.15s ease both; }
 .hero__btns   { animation: fadeSlideUp  0.7s 0.3s  ease both; }
 
+/* ── Анимации логотипа в шапке ── */
+
+/* Контейнер: нужен для блика */
+.header .logo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* 1. Вход + 3. Постоянный тихий пульс */
+.header .logo .logo__img {
+  animation:
+    logoEntry 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    logoPulse 5s 2.5s ease-in-out infinite;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.35s ease;
+}
+
+@keyframes logoEntry {
+  from { opacity: 0; transform: translateX(-22px) scale(0.78); }
+  to   { opacity: 1; transform: translateX(0)     scale(1);    }
+}
+
+@keyframes logoPulse {
+  0%, 100% { filter: saturate(1)    brightness(1);    }
+  50%       { filter: saturate(1.4) brightness(1.12); }
+}
+
+/* 2. Блик — пробегает один раз через 1.1 с после загрузки */
+.header .logo::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -90%;
+  width: 55%;
+  height: 140%;
+  background: linear-gradient(
+    108deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.58) 50%,
+    transparent 80%
+  );
+  transform: skewX(-15deg);
+  animation: logoShimmer 0.65s 1.1s ease-out both;
+  pointer-events: none;
+}
+
+@keyframes logoShimmer {
+  from { left: -90%; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  to   { left: 115%; opacity: 0; }
+}
+
+/* 4. Hover: увеличение + цветное свечение в цветах логотипа */
+.header .logo:hover .logo__img {
+  transform: scale(1.08);
+  filter:
+    saturate(1.5) brightness(1.15)
+    drop-shadow(0 0 7px rgba(66, 214, 41, 0.6))
+    drop-shadow(0 0 18px rgba(40, 169, 227, 0.4));
+}
+
 /* ═══════════════════════════════════════════════════
    АДАПТИВНОСТЬ
    ═══════════════════════════════════════════════════ */
@@ -779,5 +842,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .card, .reveal { opacity: 1 !important; transform: none !important; }
   .hero__title, .hero__subtitle, .hero__btns { opacity: 1 !important; animation: none !important; }
   .float-btn::after { display: none; }
+  .header .logo .logo__img { animation: none !important; }
+  .header .logo::after { display: none; }
   .hero, .page-hero { animation: none !important; background-size: 100% 100% !important; }
 }
