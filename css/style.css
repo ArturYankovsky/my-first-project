@@ -550,7 +550,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   padding: 56px 20px 40px;
 }
 
-.footer__logo { height: 40px; margin-bottom: 12px; filter: brightness(0) invert(1); }
+.footer__logo { display: block; margin-bottom: 12px; }
+.footer__logo .logo__img { height: 40px; filter: brightness(0) invert(1); }
 .footer__desc { font-size: 14px; line-height: 1.6; opacity: 0.7; }
 
 .footer__heading { font-size: 14px; font-weight: 700; text-transform: uppercase;
@@ -607,10 +608,88 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ═══════════════════════════════════════════════════
    АНИМАЦИИ
    ═══════════════════════════════════════════════════ */
+
+/* Базовые keyframes */
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);    opacity: 1; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0)  scale(1); }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* задержки для сетки карточек */
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.40s; }
+
+/* ── Анимированный градиент hero ── */
+.hero, .page-hero {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ── Пульс у плавающей кнопки Telegram ── */
+.float-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #229ED9;
+  animation: pulse-ring 2.2s ease-out infinite;
+  z-index: -1;
+}
+
+/* ── Лёгкое всплывание иконок в hero ── */
+.hero__icon-float {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ── Анимация появления заголовка hero ── */
+.hero__title  { animation: fadeSlideUp  0.7s ease both; }
+.hero__subtitle { animation: fadeSlideUp 0.7s 0.15s ease both; }
+.hero__btns   { animation: fadeSlideUp  0.7s 0.3s  ease both; }
 
 /* ═══════════════════════════════════════════════════
    АДАПТИВНОСТЬ
@@ -697,6 +776,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .card { opacity: 1 !important; transform: none !important; }
+  .card, .reveal { opacity: 1 !important; transform: none !important; }
   .hero__title, .hero__subtitle, .hero__btns { opacity: 1 !important; animation: none !important; }
+  .float-btn::after { display: none; }
+  .hero, .page-hero { animation: none !important; background-size: 100% 100% !important; }
 }
