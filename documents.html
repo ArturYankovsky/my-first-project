@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Документы ФГОС и ФОП — ЮВЕНТА</title>
+  <meta name="description" content="Нормативные документы для директоров школ и заведующих детскими садами: ФГОС, ФОП, методические материалы, СанПиН.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .doc-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: box-shadow var(--transition), border-color var(--transition);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .doc-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.45s ease, transform 0.45s ease; }
+    .doc-card:hover { box-shadow: var(--shadow-hover); border-color: transparent; }
+    .doc-card__icon { font-size: 32px; flex-shrink: 0; width: 48px; text-align: center; }
+    .doc-card__body { flex: 1; }
+    .doc-card__title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .doc-card__desc { font-size: 14px; color: var(--text-light); margin-bottom: 12px; line-height: 1.5; }
+    .doc-card__meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .doc-card__date { font-size: 12px; color: var(--text-light); }
+    .doc-list { display: flex; flex-direction: column; gap: 14px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="documents.html">Документы (ФГОС, ФОП)</a></li>
+              <li><a href="programs.html">Программы Минпросвещения</a></li>
+              <li><a href="grants.html">Гранты и федеральные проекты</a></li>
+              <li><a href="deadlines.html">Календарь дедлайнов</a></li>
+              <li><a href="checklists.html">Чеклисты для проверок</a></li>
+              <li><a href="templates.html">Библиотека шаблонов</a></li>
+              <li><a href="generator.html">Генератор документов</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="catalog.html">Каталог товаров</a></li>
+              <li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="news.html">Новости</a></li>
+              <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__contacts">
+        <a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a>
+        <a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero page-hero--blue">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-file-lines"></i> Документы ФГОС и ФОП</h1>
+      <p class="page-hero__subtitle">Актуальные нормативные документы для директоров школ и заведующих детскими садами</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все документы</button>
+        <button class="filter-btn" data-filter="fgos">ФГОС</button>
+        <button class="filter-btn" data-filter="fop">ФОП</button>
+        <button class="filter-btn" data-filter="methodical">Методические материалы</button>
+        <button class="filter-btn" data-filter="sanpin">СанПиН</button>
+      </div>
+
+      <div class="doc-list" id="docList">
+        <!-- Загружается из data/documents.json -->
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <div style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 12px;">ЮВЕНТА</div>
+        <p class="footer__desc">Образовательное оборудование для детских садов и школ</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Руководителям</h4>
+        <ul class="footer__links">
+          <li><a href="documents.html">Документы ФГОС/ФОП</a></li>
+          <li><a href="grants.html">Гранты и проекты</a></li>
+          <li><a href="checklists.html">Чеклисты</a></li>
+          <li><a href="generator.html">Генератор документов</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Компания</h4>
+        <ul class="footer__links">
+          <li><a href="catalog.html">Каталог товаров</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Контакты</h4>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p>
+        <p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p>
+        <a href="policy.html">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+    <i class="fa-brands fa-telegram"></i>
+  </a>
+
+  <script src="js/nav.js"></script>
+  <script>
+    const TYPE_ICONS = { pdf: '📄', link: '🔗', docx: '📝' }
+
+    let allDocs = []
+
+    fetch('data/documents.json')
+      .then(r => r.json())
+      .then(docs => {
+        allDocs = docs
+        renderDocs(docs)
+        initFilters(docs)
+      })
+
+    function renderDocs(docs) {
+      const list = document.getElementById('docList')
+      list.innerHTML = ''
+
+      docs.forEach((doc, i) => {
+        const card = document.createElement('div')
+        card.className = 'doc-card'
+        card.dataset.category = doc.category
+
+        const icon = document.createElement('div')
+        icon.className = 'doc-card__icon'
+        icon.textContent = TYPE_ICONS[doc.fileType] || '📄'
+
+        const body = document.createElement('div')
+        body.className = 'doc-card__body'
+
+        const title = document.createElement('div')
+        title.className = 'doc-card__title'
+        title.textContent = doc.title
+
+        const desc = document.createElement('p')
+        desc.className = 'doc-card__desc'
+        desc.textContent = doc.description
+
+        const meta = document.createElement('div')
+        meta.className = 'doc-card__meta'
+
+        const badge = document.createElement('span')
+        badge.className = 'badge badge--blue'
+        badge.textContent = doc.categoryName
+
+        const date = document.createElement('span')
+        date.className = 'doc-card__date'
+        date.textContent = 'Редакция ' + doc.date
+
+        if (doc.url) {
+          const link = document.createElement('a')
+          link.href = doc.url
+          link.target = '_blank'
+          link.rel = 'noopener noreferrer'
+          link.className = 'btn btn--outline'
+          link.style.padding = '6px 14px'
+          link.style.fontSize = '13px'
+          link.textContent = doc.fileType === 'link' ? 'Перейти' : 'Скачать'
+          meta.appendChild(badge)
+          meta.appendChild(date)
+          meta.appendChild(link)
+        } else {
+          meta.appendChild(badge)
+          meta.appendChild(date)
+        }
+
+        body.appendChild(title)
+        body.appendChild(desc)
+        body.appendChild(meta)
+        card.appendChild(icon)
+        card.appendChild(body)
+        list.appendChild(card)
+
+        setTimeout(() => card.classList.add('visible'), i * 60)
+      })
+    }
+
+    function initFilters(allItems) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+          const f = btn.dataset.filter
+          renderDocs(f === 'all' ? allItems : allItems.filter(d => d.category === f))
+        })
+      })
+    }
+  </script>
+</body>
+</html>

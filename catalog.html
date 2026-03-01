@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров — ЮВЕНТА</title>
+  <meta name="description" content="Интерактивные панели, конструкторы, робототехника и настенные развивающие панели для детских садов и школ. Работаем по 44-ФЗ и 223-ФЗ.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      transition: transform var(--transition), box-shadow var(--transition);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .product-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .product-card__img {
+      width: 100%;
+      height: 200px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      color: var(--border);
+    }
+    .product-card__body { padding: 20px; }
+    .product-card__category { font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .product-card__name { font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+    .product-card__desc { font-size: 14px; color: var(--text-light); margin-bottom: 14px; line-height: 1.6; }
+    .product-card__features { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .product-card__feature { background: var(--bg); border-radius: 4px; padding: 3px 8px; font-size: 12px; color: var(--text-light); }
+    .product-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .product-card__price { font-size: 15px; font-weight: 600; color: var(--green); }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal__close {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 20px;
+      color: var(--text-light);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+    .modal__close:hover { color: var(--text); }
+    .modal__title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .modal__product { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+  </style>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__text">ЮВЕНТА</span></a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Руководителю <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="documents.html">Документы (ФГОС, ФОП)</a></li>
+              <li><a href="programs.html">Программы Минпросвещения</a></li>
+              <li><a href="grants.html">Гранты и федеральные проекты</a></li>
+              <li><a href="deadlines.html">Календарь дедлайнов</a></li>
+              <li><a href="checklists.html">Чеклисты для проверок</a></li>
+              <li><a href="templates.html">Библиотека шаблонов</a></li>
+              <li><a href="generator.html">Генератор документов</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">Наши товары <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="catalog.html">Каталог товаров</a></li>
+              <li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link">О компании <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown">
+              <li><a href="news.html">Новости</a></li>
+              <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__contacts">
+        <a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a>
+        <a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero__title"><i class="fa-solid fa-store"></i> Каталог товаров</h1>
+      <p class="page-hero__subtitle">Образовательное оборудование для детских садов и школ. Работаем по 44-ФЗ и 223-ФЗ.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Все товары</button>
+        <button class="filter-btn" data-filter="panels">Интерактивные панели</button>
+        <button class="filter-btn" data-filter="constructor">Конструкторы</button>
+        <button class="filter-btn" data-filter="robotics">Робототехника</button>
+        <button class="filter-btn" data-filter="wall">Настенные панели</button>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid">
+        <!-- Карточки загружаются из data/catalog.json через JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Модальное окно — форма заявки -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal__close" id="modalClose" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title">Оставить заявку</h2>
+      <p class="modal__product" id="modalProduct"></p>
+      <form class="form" id="orderForm">
+        <div class="form__group">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required placeholder="Иванова Мария Петровна">
+        </div>
+        <div class="form__group">
+          <label for="org">Организация *</label>
+          <input type="text" id="org" name="org" required placeholder="МБДОУ «Детский сад №1»">
+        </div>
+        <div class="form__group">
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+7 (900) 000-00-00">
+        </div>
+        <div class="form__group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="ivanova@school.ru">
+        </div>
+        <div class="form__group">
+          <label for="message">Комментарий</label>
+          <textarea id="message" name="message" placeholder="Количество, дополнительные требования..."></textarea>
+        </div>
+        <div class="form__consent">
+          <label>
+            <input type="checkbox" required>
+            Согласен(а) на <a href="policy.html" target="_blank">обработку персональных данных</a>
+          </label>
+        </div>
+        <!-- TODO: добавить Cloudflare Turnstile перед публикацией -->
+        <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center;">
+          <i class="fa-solid fa-paper-plane"></i> Отправить заявку
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <div style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 12px;">ЮВЕНТА</div>
+        <p class="footer__desc">Образовательное оборудование для детских садов и школ</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Руководителям</h4>
+        <ul class="footer__links">
+          <li><a href="documents.html">Документы ФГОС/ФОП</a></li>
+          <li><a href="grants.html">Гранты и проекты</a></li>
+          <li><a href="checklists.html">Чеклисты для проверок</a></li>
+          <li><a href="generator.html">Генератор документов</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Компания</h4>
+        <ul class="footer__links">
+          <li><a href="catalog.html">Каталог товаров</a></li>
+          <li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Контакты</h4>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p>
+        <p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener">Telegram</a></p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p>
+        <a href="policy.html">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+    <i class="fa-brands fa-telegram"></i>
+  </a>
+
+  <script src="js/nav.js"></script>
+  <script src="js/filters.js"></script>
+  <script>
+    // Загрузка каталога из JSON (защита от XSS: только textContent/DOM API)
+    const ICONS = { panels: '🖥️', constructor: '🧱', robotics: '🤖', wall: '🎨' }
+
+    fetch('data/catalog.json')
+      .then(r => r.json())
+      .then(items => {
+        renderCatalog(items)
+        initFilters(items)
+      })
+
+    function renderCatalog(items) {
+      const grid = document.getElementById('catalogGrid')
+      grid.innerHTML = ''
+      items.forEach(item => {
+        const card = document.createElement('div')
+        card.className = 'product-card card'
+        card.dataset.category = item.category
+
+        // Иконка-заглушка вместо фото
+        const imgDiv = document.createElement('div')
+        imgDiv.className = 'product-card__img'
+        imgDiv.textContent = ICONS[item.category] || '📦'
+
+        const body = document.createElement('div')
+        body.className = 'product-card__body'
+
+        const cat = document.createElement('div')
+        cat.className = 'product-card__category'
+        cat.textContent = item.categoryName
+
+        const name = document.createElement('h3')
+        name.className = 'product-card__name'
+        name.textContent = item.name
+
+        const desc = document.createElement('p')
+        desc.className = 'product-card__desc'
+        desc.textContent = item.description
+
+        const features = document.createElement('div')
+        features.className = 'product-card__features'
+        item.features.forEach(f => {
+          const tag = document.createElement('span')
+          tag.className = 'product-card__feature'
+          tag.textContent = f
+          features.appendChild(tag)
+        })
+
+        const footer = document.createElement('div')
+        footer.className = 'product-card__footer'
+
+        const price = document.createElement('span')
+        price.className = 'product-card__price'
+        price.textContent = item.price
+
+        const btn = document.createElement('button')
+        btn.className = 'btn btn--primary'
+        btn.style.padding = '8px 16px'
+        btn.style.fontSize = '14px'
+        btn.textContent = 'Заявка'
+        btn.addEventListener('click', () => openModal(item.name))
+
+        if (item.badge) {
+          const badge = document.createElement('span')
+          badge.className = `badge badge--${item.badgeType || 'green'}`
+          badge.textContent = item.badge
+          body.appendChild(badge)
+        }
+
+        footer.appendChild(price)
+        footer.appendChild(btn)
+        body.appendChild(cat)
+        body.appendChild(name)
+        body.appendChild(desc)
+        body.appendChild(features)
+        body.appendChild(footer)
+        card.appendChild(imgDiv)
+        card.appendChild(body)
+        grid.appendChild(card)
+      })
+
+      // Запустить анимацию появления
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.product-card').forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), i * 80)
+        })
+      })
+    }
+
+    function initFilters(allItems) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+          const filter = btn.dataset.filter
+          const filtered = filter === 'all' ? allItems : allItems.filter(i => i.category === filter)
+          renderCatalog(filtered)
+        })
+      })
+    }
+
+    // Модальное окно заявки
+    function openModal(productName) {
+      const overlay = document.getElementById('modalOverlay')
+      const productEl = document.getElementById('modalProduct')
+      productEl.textContent = 'Товар: ' + productName
+      overlay.classList.add('open')
+      document.body.style.overflow = 'hidden'
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal)
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal()
+    })
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal() })
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open')
+      document.body.style.overflow = ''
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', (e) => {
+      e.preventDefault()
+      // TODO: отправка через EmailJS
+      alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.')
+      closeModal()
+      e.target.reset()
+    })
+  </script>
+</body>
+</html>

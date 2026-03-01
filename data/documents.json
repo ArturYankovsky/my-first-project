@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "category": "fgos",
+    "categoryName": "ФГОС",
+    "title": "ФГОС дошкольного образования",
+    "description": "Федеральный государственный образовательный стандарт дошкольного образования (актуальная редакция)",
+    "date": "2022",
+    "url": "https://fgos.ru/fgos/fgos-do/",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 2,
+    "category": "fop",
+    "categoryName": "ФОП",
+    "title": "ФОП дошкольного образования",
+    "description": "Федеральная образовательная программа дошкольного образования. Обязательна с 01.09.2023. Приказ Минпросвещения № 1028 от 25.11.2022.",
+    "date": "2022",
+    "url": "https://files.oprf.ru/storage/image_store/docs2022/programma15122022.pdf",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 3,
+    "category": "fgos",
+    "categoryName": "ФГОС",
+    "title": "ФГОС начального общего образования (НОО)",
+    "description": "Актуальный ФГОС НОО с изменениями 2024 года. Для 1–4 классов.",
+    "date": "2024",
+    "url": "https://fgos.ru/fgos/fgos-noo/",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 4,
+    "category": "fgos",
+    "categoryName": "ФГОС",
+    "title": "ФГОС основного общего образования (ООО)",
+    "description": "Актуальный ФГОС ООО с изменениями 2024 года. Для 5–9 классов.",
+    "date": "2024",
+    "url": "https://fgos.ru/fgos/fgos-ooo/",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 5,
+    "category": "fop",
+    "categoryName": "ФОП",
+    "title": "ФОП начального общего образования (НОО)",
+    "description": "Федеральная образовательная программа НОО. Приказ Минпросвещения № 372 от 18.05.2023.",
+    "date": "2023",
+    "url": "https://edsoo.ru/normativnye-dokumenty/",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 6,
+    "category": "fop",
+    "categoryName": "ФОП",
+    "title": "ФОП основного общего образования (ООО)",
+    "description": "Федеральная образовательная программа ООО с изменениями 2025–2026 учебного года.",
+    "date": "2023",
+    "url": "https://edsoo.ru/normativnye-dokumenty/",
+    "fileType": "pdf",
+    "isOfficial": true
+  },
+  {
+    "id": 7,
+    "category": "methodical",
+    "categoryName": "Методические материалы",
+    "title": "Конструктор рабочих программ — edsoo.ru",
+    "description": "Официальный инструмент Минпросвещения для создания рабочих программ по всем предметам и классам.",
+    "date": "2024",
+    "url": "https://edsoo.ru/",
+    "fileType": "link",
+    "isOfficial": true
+  },
+  {
+    "id": 8,
+    "category": "methodical",
+    "categoryName": "Методические материалы",
+    "title": "Программа просвещения родителей «Родительский навигатор»",
+    "description": "Федеральная программа 2024–2030. Материалы для ДОУ: плакаты, памятки, методические рекомендации.",
+    "date": "2024",
+    "url": "https://xn--80aidamjr3akke.xn--p1ai/",
+    "fileType": "link",
+    "isOfficial": true
+  },
+  {
+    "id": 9,
+    "category": "sanpin",
+    "categoryName": "СанПиН",
+    "title": "СанПиН для дошкольных образовательных организаций",
+    "description": "Санитарно-эпидемиологические требования к организациям дошкольного образования (актуальная редакция).",
+    "date": "2021",
+    "url": "https://www.rospotrebnadzor.ru/",
+    "fileType": "pdf",
+    "isOfficial": true
+  }
+]

@@ -1,11 +1,316 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Привет!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЮВЕНТА — образовательное оборудование для школ и детских садов</title>
+  <meta name="description" content="Интерактивные панели, конструкторы, робототехника и настенные панели для детских садов и школ. Полезные документы по ФГОС и ФОП, гранты, инструменты для руководителей.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <!-- TODO: добавить integrity-хэш из https://www.srihash.org/ перед публикацией -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <h1>Привет!</h1>
+
+  <!-- ═══ ШАПКА ═══ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a href="index.html" class="logo">
+        <!-- Если SVG ещё нет — показываем текст -->
+        <span class="logo__text">ЮВЕНТА</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link" aria-haspopup="true">
+              Руководителю <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown">
+              <li><a href="documents.html"><i class="fa-solid fa-file-lines fa-fw"></i> Документы (ФГОС, ФОП)</a></li>
+              <li><a href="programs.html"><i class="fa-solid fa-graduation-cap fa-fw"></i> Программы Минпросвещения</a></li>
+              <li><a href="grants.html"><i class="fa-solid fa-hand-holding-dollar fa-fw"></i> Гранты и федеральные проекты</a></li>
+              <li><a href="deadlines.html"><i class="fa-solid fa-calendar-check fa-fw"></i> Календарь дедлайнов</a></li>
+              <li><a href="checklists.html"><i class="fa-solid fa-list-check fa-fw"></i> Чеклисты для проверок</a></li>
+              <li><a href="templates.html"><i class="fa-solid fa-folder-open fa-fw"></i> Библиотека шаблонов</a></li>
+              <li><a href="generator.html"><i class="fa-solid fa-wand-magic-sparkles fa-fw"></i> Генератор документов</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link" aria-haspopup="true">
+              Наши товары <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown">
+              <li><a href="catalog.html"><i class="fa-solid fa-store fa-fw"></i> Каталог товаров</a></li>
+              <li><a href="fgos-equipment.html"><i class="fa-solid fa-clipboard-check fa-fw"></i> Оснащение по ФГОС</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link" aria-haspopup="true">
+              О компании <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <ul class="dropdown">
+              <li><a href="news.html"><i class="fa-solid fa-newspaper fa-fw"></i> Новости</a></li>
+              <li><a href="contacts.html"><i class="fa-solid fa-address-card fa-fw"></i> Контакты</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="header__contacts">
+        <a href="tel:+79000000000" class="header__phone">+7 (900) 000-00-00</a>
+        <a href="https://t.me/yuventa" class="btn btn--tg" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-telegram"></i> Telegram
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <h1 class="hero__title">Всё для современной<br>школы и детского сада</h1>
+      <p class="hero__subtitle">
+        Интерактивные панели, конструкторы, робототехника и развивающие панели.
+        Плюс полезные документы, гранты и инструменты для руководителей — всё в одном месте.
+      </p>
+      <div class="hero__btns">
+        <a href="catalog.html" class="btn btn--primary">
+          <i class="fa-solid fa-store"></i> Смотреть каталог
+        </a>
+        <a href="documents.html" class="btn btn--outline">
+          <i class="fa-solid fa-file-lines"></i> Документы для руководителей
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ БЫСТРЫЙ ДОСТУП ═══ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Что найдёт руководитель на сайте</h2>
+      <p class="section__subtitle">Полезные инструменты и ресурсы для директоров школ и заведующих детскими садами</p>
+
+      <div class="cards-grid">
+
+        <a href="documents.html" class="card card--link">
+          <div class="card__icon" style="background: #E8F5E9;">
+            <i class="fa-solid fa-file-lines" style="color: #2E7D32;"></i>
+          </div>
+          <h3 class="card__title">Документы<br>ФГОС и ФОП</h3>
+          <p class="card__text">Нормативные документы, методические материалы — скачать в один клик</p>
+        </a>
+
+        <a href="grants.html" class="card card--link">
+          <div class="card__icon" style="background: #FFF8E1;">
+            <i class="fa-solid fa-hand-holding-dollar" style="color: #F9A825;"></i>
+          </div>
+          <h3 class="card__title">Гранты и<br>федеральные проекты</h3>
+          <p class="card__text">Актуальные гранты и программы финансирования с дедлайнами</p>
+        </a>
+
+        <a href="generator.html" class="card card--link">
+          <div class="card__icon" style="background: #E3F2FD;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: #1565C0;"></i>
+          </div>
+          <h3 class="card__title">Генератор<br>документов</h3>
+          <p class="card__text">Создайте приказ, рабочую программу или акт прямо в браузере</p>
+        </a>
+
+        <a href="checklists.html" class="card card--link">
+          <div class="card__icon" style="background: #FFEBEE;">
+            <i class="fa-solid fa-list-check" style="color: #C62828;"></i>
+          </div>
+          <h3 class="card__title">Чеклисты<br>для проверок</h3>
+          <p class="card__text">Подготовьтесь к Рособрнадзору, пожарной проверке и СанПиН</p>
+        </a>
+
+        <a href="programs.html" class="card card--link">
+          <div class="card__icon" style="background: #F3E5F5;">
+            <i class="fa-solid fa-graduation-cap" style="color: #7B1FA2;"></i>
+          </div>
+          <h3 class="card__title">Программы<br>Минпросвещения</h3>
+          <p class="card__text">Родительский навигатор, ФОП ДО, Цифровая образовательная среда и другие</p>
+        </a>
+
+        <a href="deadlines.html" class="card card--link">
+          <div class="card__icon" style="background: #E8F5E9;">
+            <i class="fa-solid fa-calendar-check" style="color: #2E7D32;"></i>
+          </div>
+          <h3 class="card__title">Календарь<br>дедлайнов</h3>
+          <p class="card__text">Не пропустите важные даты: отчёты, аттестации, гранты, ГИА и ЕГЭ</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ НАШИ ТОВАРЫ ═══ -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">Наши товары для детских садов и школ</h2>
+      <p class="section__subtitle">Поставляем образовательное оборудование по всей России. Работаем по 44-ФЗ и 223-ФЗ, предоставляем все необходимые документы.</p>
+
+      <div class="cards-grid cards-grid--4">
+
+        <div class="card">
+          <div class="card__icon" style="background: #E3F2FD;">
+            <i class="fa-solid fa-display" style="color: #1565C0;"></i>
+          </div>
+          <h3 class="card__title">Интерактивные панели</h3>
+          <p class="card__text">Современные решения для классов и аудиторий любого формата</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon" style="background: #E8F5E9;">
+            <i class="fa-solid fa-cubes" style="color: #2E7D32;"></i>
+          </div>
+          <h3 class="card__title">Конструкторы</h3>
+          <p class="card__text">Развивающие наборы для технического творчества и STEM-образования</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon" style="background: #FFEBEE;">
+            <i class="fa-solid fa-robot" style="color: #C62828;"></i>
+          </div>
+          <h3 class="card__title">Робототехника</h3>
+          <p class="card__text">Образовательные роботы и программируемые конструкторы</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon" style="background: #FFF8E1;">
+            <i class="fa-solid fa-chalkboard" style="color: #F9A825;"></i>
+          </div>
+          <h3 class="card__title">Настенные панели</h3>
+          <p class="card__text">Развивающие панели с озвучкой, подсветкой и световой индикацией</p>
+        </div>
+
+      </div>
+
+      <div class="section__cta">
+        <a href="catalog.html" class="btn btn--primary">
+          <i class="fa-solid fa-store"></i> Смотреть весь каталог
+        </a>
+        <a href="fgos-equipment.html" class="btn btn--outline">
+          <i class="fa-solid fa-clipboard-check"></i> Оснащение по ФГОС
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ О КОМПАНИИ ═══ -->
+  <section class="section" id="about">
+    <div class="container about-grid">
+
+      <div class="about-grid__text">
+        <h2 class="section__title">О компании ЮВЕНТА</h2>
+        <p>Мы поставляем образовательное оборудование в детские сады и школы по всей России. Наши товары соответствуют требованиям ФГОС и ФОП, сертифицированы и готовы к работе в государственных учреждениях.</p>
+        <ul class="about-list">
+          <li><i class="fa-solid fa-check" style="color: #2E7D32;"></i> Работаем по 44-ФЗ и 223-ФЗ</li>
+          <li><i class="fa-solid fa-check" style="color: #2E7D32;"></i> Все необходимые сертификаты и документы на товары</li>
+          <li><i class="fa-solid fa-check" style="color: #2E7D32;"></i> Гарантия и сервисное обслуживание</li>
+          <li><i class="fa-solid fa-check" style="color: #2E7D32;"></i> Доставка по всей России</li>
+        </ul>
+        <a href="contacts.html" class="btn btn--primary">
+          <i class="fa-solid fa-envelope"></i> Связаться с нами
+        </a>
+      </div>
+
+      <div class="about-grid__stats">
+        <div class="stat-card card">
+          <div class="stat-card__number">500+</div>
+          <div class="stat-card__label">детских садов и школ</div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-card__number">10+</div>
+          <div class="stat-card__label">лет на рынке</div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-card__number">50+</div>
+          <div class="stat-card__label">регионов России</div>
+        </div>
+        <div class="stat-card card">
+          <div class="stat-card__number">100%</div>
+          <div class="stat-card__label">сертифицированное оборудование</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ ПОДВАЛ ═══ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <div class="footer__col">
+        <div style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 12px;">ЮВЕНТА</div>
+        <p class="footer__desc">Образовательное оборудование для детских садов и школ по всей России</p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__heading">Руководителям</h4>
+        <ul class="footer__links">
+          <li><a href="documents.html">Документы ФГОС/ФОП</a></li>
+          <li><a href="programs.html">Программы Минпросвещения</a></li>
+          <li><a href="grants.html">Гранты и проекты</a></li>
+          <li><a href="checklists.html">Чеклисты для проверок</a></li>
+          <li><a href="generator.html">Генератор документов</a></li>
+          <li><a href="deadlines.html">Календарь дедлайнов</a></li>
+          <li><a href="templates.html">Библиотека шаблонов</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__heading">Компания</h4>
+        <ul class="footer__links">
+          <li><a href="catalog.html">Каталог товаров</a></li>
+          <li><a href="fgos-equipment.html">Оснащение по ФГОС</a></li>
+          <li><a href="news.html">Новости</a></li>
+          <li><a href="contacts.html">Контакты и реквизиты</a></li>
+          <li><a href="policy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__heading">Контакты</h4>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@yuventa.ru">info@yuventa.ru</a></p>
+        <p><i class="fa-brands fa-telegram"></i> <a href="https://t.me/yuventa" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+        <p><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/79000000000" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2025 ЮВЕНТА. Единственный официальный сайт — yuventa.ru</p>
+        <a href="policy.html">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Плавающая кнопка Telegram -->
+  <a href="https://t.me/yuventa" class="float-btn" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram">
+    <i class="fa-brands fa-telegram"></i>
+  </a>
+
+  <script src="js/nav.js"></script>
 </body>
 </html>
