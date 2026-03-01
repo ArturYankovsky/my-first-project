@@ -64,6 +64,13 @@
     .gen-preview .preview-bold { font-weight: bold; }
     .gen-preview .preview-line { border-bottom: 1px dashed var(--border); margin: 12px 0; }
 
+    .form__group select {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+      border-radius: var(--radius); font-size: 14px; font-family: var(--font);
+      background: var(--white); color: var(--text);
+    }
+    .form__group select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,.1); }
+
     .notice {
       background: #E3F2FD;
       border-left: 4px solid var(--blue);
@@ -113,6 +120,8 @@
         <button class="gen-tab active" data-tab="order"><i class="fa-solid fa-file-signature"></i> Приказ о рабочих программах</button>
         <button class="gen-tab" data-tab="act"><i class="fa-solid fa-file-contract"></i> Акт приёмки оборудования</button>
         <button class="gen-tab" data-tab="grant"><i class="fa-solid fa-envelope"></i> Заявка на грант</button>
+        <button class="gen-tab" data-tab="commission"><i class="fa-solid fa-gavel"></i> Приказ о комиссии</button>
+        <button class="gen-tab" data-tab="memo"><i class="fa-solid fa-note-sticky"></i> Служебная записка</button>
       </div>
 
       <!-- Панель 1: Приказ -->
@@ -137,6 +146,15 @@
               <div class="form__group">
                 <label>ФИО директора / заведующей *</label>
                 <input type="text" id="o_director" required placeholder="Иванова Мария Петровна">
+              </div>
+              <div class="form__group">
+                <label>Должность руководителя</label>
+                <select id="o_role">
+                  <option value="Директор">Директор</option>
+                  <option value="Заведующая">Заведующая</option>
+                  <option value="Заведующий">Заведующий</option>
+                  <option value="И.о. директора">И.о. директора</option>
+                </select>
               </div>
               <div class="form__group">
                 <label>Учебный год *</label>
@@ -208,6 +226,15 @@
                 <label>ФИО директора / заведующей *</label>
                 <input type="text" id="a_director" required placeholder="Иванова Мария Петровна">
               </div>
+              <div class="form__group">
+                <label>Должность руководителя</label>
+                <select id="a_role">
+                  <option value="Директор">Директор</option>
+                  <option value="Заведующая">Заведующая</option>
+                  <option value="Заведующий">Заведующий</option>
+                  <option value="И.о. директора">И.о. директора</option>
+                </select>
+              </div>
               <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
                 <i class="fa-solid fa-download"></i> Скачать .docx
               </button>
@@ -255,6 +282,15 @@
                 <input type="text" id="g_director" required placeholder="Иванова Мария Петровна">
               </div>
               <div class="form__group">
+                <label>Должность руководителя</label>
+                <select id="g_role">
+                  <option value="Директор">Директор</option>
+                  <option value="Заведующая">Заведующая</option>
+                  <option value="Заведующий">Заведующий</option>
+                  <option value="И.о. директора">И.о. директора</option>
+                </select>
+              </div>
+              <div class="form__group">
                 <label>Название проекта *</label>
                 <input type="text" id="g_project" required placeholder="«Мир возможностей» — STEM для дошкольников">
               </div>
@@ -293,6 +329,134 @@
         </div>
       </div>
 
+      <!-- Панель 4: Приказ о создании комиссии по приёмке -->
+      <div class="gen-panel" id="panel-commission">
+        <div class="gen-layout">
+          <div class="gen-form-card">
+            <h2>Приказ о создании комиссии по приёмке</h2>
+            <p class="desc">Приказ о создании инвентаризационной комиссии для приёмки учебного оборудования. Подходит для процедур по 44-ФЗ и 223-ФЗ.</p>
+            <form class="form" id="formCommission">
+              <div class="form__group">
+                <label>Наименование организации *</label>
+                <input type="text" id="c_org" required placeholder="МБОУ «Школа №15»">
+              </div>
+              <div class="form__group">
+                <label>Дата приказа *</label>
+                <input type="text" id="c_date" required placeholder="01.09.2025">
+              </div>
+              <div class="form__group">
+                <label>Номер приказа</label>
+                <input type="text" id="c_number" placeholder="126">
+              </div>
+              <div class="form__group">
+                <label>ФИО директора / заведующей *</label>
+                <input type="text" id="c_director" required placeholder="Иванова Мария Петровна">
+              </div>
+              <div class="form__group">
+                <label>Должность руководителя</label>
+                <select id="c_role">
+                  <option value="Директор">Директор</option>
+                  <option value="Заведующая">Заведующая</option>
+                  <option value="Заведующий">Заведующий</option>
+                  <option value="И.о. директора">И.о. директора</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label>ФИО председателя комиссии *</label>
+                <input type="text" id="c_chair" required placeholder="Петрова Анна Ивановна, зам. директора">
+              </div>
+              <div class="form__group">
+                <label>Наименование оборудования *</label>
+                <input type="text" id="c_equipment" required placeholder="Интерактивная панель 65 дюймов">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+                <i class="fa-solid fa-download"></i> Скачать .docx
+              </button>
+            </form>
+          </div>
+          <div class="gen-preview">
+            <h3><i class="fa-solid fa-eye"></i> Предварительный вид</h3>
+            <div class="preview-doc">
+              <p class="preview-center preview-bold">МБОУ «ШКОЛА №15»</p>
+              <p class="preview-center preview-bold" style="font-size:16px">ПРИКАЗ</p>
+              <p class="preview-center">от 01.09.2025 № 126</p>
+              <div class="preview-line"></div>
+              <p class="preview-center preview-bold">О создании комиссии по приёмке учебного оборудования</p>
+              <div class="preview-line"></div>
+              <p><strong>ПРИКАЗЫВАЮ:</strong></p>
+              <p>1. Создать комиссию по приёмке: Интерактивная панель 65".</p>
+              <p>2. Назначить председателем: Петрова А.И., зам. директора.</p>
+              <p>3. Членами комиссии назначить: [ФИО, должность].</p>
+              <p>4. Комиссии провести приёмку, составить акт.</p>
+              <div class="preview-line"></div>
+              <p>Директор: _____________ / Иванова М.П. /</p>
+              <p>М.П.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Панель 5: Служебная записка о закупке -->
+      <div class="gen-panel" id="panel-memo">
+        <div class="gen-layout">
+          <div class="gen-form-card">
+            <h2>Служебная записка о закупке оборудования</h2>
+            <p class="desc">Внутренний документ для обоснования необходимости закупки учебного оборудования с обоснованием по ФГОС.</p>
+            <form class="form" id="formMemo">
+              <div class="form__group">
+                <label>Наименование организации *</label>
+                <input type="text" id="m_org" required placeholder="МБДОУ «Детский сад №1»">
+              </div>
+              <div class="form__group">
+                <label>Дата *</label>
+                <input type="text" id="m_date" required placeholder="01.03.2025">
+              </div>
+              <div class="form__group">
+                <label>Кому (должность и ФИО) *</label>
+                <input type="text" id="m_to" required placeholder="Директору, Иванова М.П.">
+              </div>
+              <div class="form__group">
+                <label>От кого (должность и ФИО) *</label>
+                <input type="text" id="m_from" required placeholder="Завуч, Сидорова О.В.">
+              </div>
+              <div class="form__group">
+                <label>Наименование оборудования *</label>
+                <input type="text" id="m_equipment" required placeholder="Набор робототехники LEGO Education">
+              </div>
+              <div class="form__group">
+                <label>Ориентировочная стоимость (₽) *</label>
+                <input type="text" id="m_amount" required placeholder="85 000">
+              </div>
+              <div class="form__group">
+                <label>Цель закупки</label>
+                <input type="text" id="m_reason" placeholder="обеспечения требований ФГОС и ФОП">
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">
+                <i class="fa-solid fa-download"></i> Скачать .docx
+              </button>
+            </form>
+          </div>
+          <div class="gen-preview">
+            <h3><i class="fa-solid fa-eye"></i> Предварительный вид</h3>
+            <div class="preview-doc">
+              <p class="preview-center preview-bold">МБДОУ «ДЕТСКИЙ САД №1»</p>
+              <p style="text-align:right"><strong>Кому:</strong> Директору, Иванова М.П.</p>
+              <p style="text-align:right"><strong>От:</strong> Завуч, Сидорова О.В.</p>
+              <p style="text-align:right"><strong>Дата:</strong> 01.03.2025</p>
+              <div class="preview-line"></div>
+              <p class="preview-center preview-bold">СЛУЖЕБНАЯ ЗАПИСКА</p>
+              <p class="preview-center">о необходимости закупки учебного оборудования</p>
+              <div class="preview-line"></div>
+              <p>В целях обеспечения требований ФГОС прошу рассмотреть возможность закупки:</p>
+              <p><strong>Набор робототехники LEGO Education</strong></p>
+              <p>Стоимость: 85 000 руб.</p>
+              <div class="preview-line"></div>
+              <p>Завуч Сидорова О.В.: _________________</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -310,15 +474,19 @@
   <script src="js/nav.js"></script>
   <script src="js/generator.js"></script>
   <script>
-    // Переключение вкладок
+    function activateTab(name) {
+      document.querySelectorAll('.gen-tab').forEach(t => t.classList.remove('active'))
+      document.querySelectorAll('.gen-panel').forEach(p => p.classList.remove('active'))
+      const tab = document.querySelector('.gen-tab[data-tab="' + name + '"]')
+      const panel = document.getElementById('panel-' + name)
+      if (tab && panel) { tab.classList.add('active'); panel.classList.add('active') }
+    }
     document.querySelectorAll('.gen-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.gen-tab').forEach(t => t.classList.remove('active'))
-        document.querySelectorAll('.gen-panel').forEach(p => p.classList.remove('active'))
-        tab.classList.add('active')
-        document.getElementById('panel-' + tab.dataset.tab).classList.add('active')
-      })
+      tab.addEventListener('click', () => activateTab(tab.dataset.tab))
     })
+    // Активация нужной вкладки по URL-параметру ?tab=...
+    const urlTab = new URLSearchParams(location.search).get('tab')
+    if (urlTab) activateTab(urlTab)
   </script>
   <script src="js/animate.js"></script>
 </body>

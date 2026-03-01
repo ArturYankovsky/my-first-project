@@ -110,7 +110,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 6px);
+  top: 100%;           /* нет зазора — буфер создаётся через padding-top */
   left: 0;
   min-width: 230px;
   background: var(--white);
@@ -121,6 +121,25 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   z-index: 100;
 }
 .nav__item:hover .dropdown { display: block; }
+
+/* Десктоп: visibility+opacity вместо display, задержка перед скрытием */
+@media (min-width: 769px) {
+  .dropdown {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    padding-top: 10px;  /* невидимая зона — курсор не «выпадает» при движении вниз */
+    transition: opacity 0.16s ease, visibility 0.16s ease;
+    transition-delay: 0.28s; /* 280 мс перед началом скрытия */
+  }
+  .nav__item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+}
 
 .dropdown li a {
   display: block;

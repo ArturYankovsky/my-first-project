@@ -9,7 +9,8 @@
     "format": "docx",
     "pages": 2,
     "icon": "fa-file-signature",
-    "tags": ["рабочие программы", "ФОП", "ФГОС"]
+    "tags": ["рабочие программы", "ФОП", "ФГОС"],
+    "generatorTab": "order"
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "format": "docx",
     "pages": 1,
     "icon": "fa-file-signature",
-    "tags": ["оборудование", "44-ФЗ", "комиссия"]
+    "tags": ["оборудование", "44-ФЗ", "комиссия"],
+    "generatorTab": "commission"
   },
   {
     "id": 3,
@@ -45,7 +47,8 @@
     "format": "docx",
     "pages": 2,
     "icon": "fa-file-contract",
-    "tags": ["оборудование", "44-ФЗ", "акт"]
+    "tags": ["оборудование", "44-ФЗ", "акт"],
+    "generatorTab": "act"
   },
   {
     "id": 5,
@@ -69,7 +72,8 @@
     "format": "docx",
     "pages": 3,
     "icon": "fa-envelope",
-    "tags": ["грант", "заявка", "конкурс"]
+    "tags": ["грант", "заявка", "конкурс"],
+    "generatorTab": "grant"
   },
   {
     "id": 7,
@@ -81,7 +85,8 @@
     "format": "docx",
     "pages": 2,
     "icon": "fa-envelope",
-    "tags": ["закупка", "44-ФЗ", "обоснование"]
+    "tags": ["закупка", "44-ФЗ", "обоснование"],
+    "generatorTab": "memo"
   },
   {
     "id": 8,

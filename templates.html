@@ -165,11 +165,11 @@
         btn.className = 'btn btn--primary'
         btn.style.padding = '7px 16px'
         btn.style.fontSize = '13px'
-        btn.href = 'generator.html'
+        btn.href = t.generatorTab ? 'generator.html?tab=' + t.generatorTab : 'generator.html'
         const btnIcon = document.createElement('i')
-        btnIcon.className = 'fa-solid fa-download'
+        btnIcon.className = t.generatorTab ? 'fa-solid fa-wand-magic-sparkles' : 'fa-solid fa-download'
         btn.appendChild(btnIcon)
-        btn.appendChild(document.createTextNode(' Скачать'))
+        btn.appendChild(document.createTextNode(t.generatorTab ? ' Сгенерировать' : ' Скачать'))
         footer.appendChild(info); footer.appendChild(btn)
 
         card.appendChild(header)
